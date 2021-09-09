@@ -12,9 +12,7 @@ mongoose.connect(DB_CONNECTION);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/ping', (req, res) => {
-    res.json('pong');
-});
+app.get('/ping', (req, res) => res.json('pong'));
 
 app.use('/auth', authRouter);
 app.use('/cars', carRouter);

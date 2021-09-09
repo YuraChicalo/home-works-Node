@@ -1,4 +1,4 @@
-const { CREATED, DELETED, UPDATED } = require('../errors/statusCodes');
+const { statusCodes, statusMessages } = require('../errors');
 const { userDB } = require('../dataBase');
 const { passwordService: { hashPassword } } = require('../services');
 const { userUtils: { userNormalizator } } = require('../utils');
@@ -30,7 +30,7 @@ module.exports = {
 
             const createdUser = await userDB.create({ ...req.body, password: hashedPassword });
             const normalCreatedUser = userNormalizator(createdUser);
-            res.status(CREATED).json(normalCreatedUser);
+            res.status(statusCodes.CREATED).json(normalCreatedUser);
         } catch (e) {
             next(e);
         }
@@ -40,7 +40,7 @@ module.exports = {
         try {
             const { user_id } = req.params;
             await userDB.findByIdAndDelete(user_id);
-            res.status(DELETED).json('user is deleted');
+            res.sendStatus(statusCodes.DELETED);
         } catch (e) {
             next(e);
         }
@@ -51,7 +51,7 @@ module.exports = {
             const { user_id } = req.params;
             const updatedUser = await userDB.findByIdAndUpdate(user_id, req.body);
             userNormalizator(updatedUser);
-            res.status(UPDATED).json('user is updated');
+            res.status(statusCodes.CREATED).json(statusMessages.USER_ID_UPDATE);
         } catch (e) {
             next(e);
         }

@@ -11,6 +11,7 @@ module.exports = {
             if (error) {
                 throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
             }
+
             next();
         } catch (e) {
             next(e);
@@ -25,6 +26,7 @@ module.exports = {
             if (!isPresent) {
                 throw new ErrorHandler(NOT_FOUND, WRONG_DATA);
             }
+
             req.user = isPresent;
             next();
         } catch (e) {
@@ -34,8 +36,8 @@ module.exports = {
 
     comparePassword: async (req, res, next) => {
         try {
-            const { password } = req.body;
-            const { user } = req;
+            const { body: { password }, user } = req;
+
             await comparePassword(password, user.password);
 
             next();

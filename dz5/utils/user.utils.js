@@ -6,6 +6,7 @@ module.exports = {
         fieldsToDelete.forEach((field) => {
             delete userToNormalize[field];
         });
+
         return userToNormalize;
     }
 };

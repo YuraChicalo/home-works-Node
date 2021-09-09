@@ -5,4 +5,5 @@ module.exports = {
     INCORRECT_YEAR: 'Incorrect year',
     ALREADY_EXIST: 'Already exist',
     WRONG_DATA: 'Email or password is incorrect',
+    USER_ID_UPDATE: 'user is updated'
 };

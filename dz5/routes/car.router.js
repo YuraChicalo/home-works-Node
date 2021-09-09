@@ -9,8 +9,9 @@ const { carMiddleware: { isCarPresent, validateCreateCar, validateUpdateCar } } 
 
 router.get('/', getAllCars);
 router.post('/', validateCreateCar, createCar);
+
 router.get('/:car_id', isCarPresent, getCarById);
 router.delete('/:car_id', isCarPresent, deleteCar);
-router.put('/:car_id', validateUpdateCar, updateCar);
+router.put('/:car_id', validateUpdateCar, isCarPresent, updateCar);
 
 module.exports = router;

@@ -12,8 +12,9 @@ const {
 
 router.get('/', getAllUsers);
 router.post('/', validateCreateUser, isUniqueEmail, createUser);
+
 router.get('/:user_id', isUserPresent, getUserById);
 router.delete('/:user_id', isUserPresent, deleteUser);
-router.put('/:user_id', validateUpdateUser, updateUser);
+router.put('/:user_id', validateUpdateUser, isUserPresent, updateUser);
 
 module.exports = router;
