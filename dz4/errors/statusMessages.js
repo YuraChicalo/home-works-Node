@@ -1,7 +1,0 @@
-module.exports = {
-    NOT_FOUND: 'Not found',
-    CAR_NOT_FOUND: 'Car not found',
-    INCORRECT_PRICE: 'Incorrect price',
-    INCORRECT_YEAR: 'Incorrect year',
-    ALREADY_EXIST: 'Already exist',
-};
